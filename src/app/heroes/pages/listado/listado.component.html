@@ -1,28 +1,7 @@
 <h1>Listado de Héroes</h1>
 <mat-divider></mat-divider>
 <br>
-<div class="container-card">
-  <mat-card class="example-card" *ngFor="let heroe of heroes">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{heroe.superhero}}</mat-card-title>
-      <mat-card-subtitle>{{heroe.alter_ego}}</mat-card-subtitle>
-    </mat-card-header>
-
-    <img mat-card-image src="assets/heroes/{{heroe.id}}.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-      <h3>{{heroe.publisher}}</h3>
-      <p>
-        <strong>Primera aparición</strong>{{heroe.first_appearance}}
-        <br>
-        <strong>Personajes:</strong>{{heroe.characters}}
-      </p>
-    </mat-card-content>
-
-    <mat-card-actions>
-      <button mat-button color="warn">Leer más...</button>
-      <button mat-button color="info">Editar</button>
-    </mat-card-actions>
-  </mat-card>
+<div class="container-card" >
+ <app-heroe-tarjeta [heroe]="heroe" *ngFor="let heroe of heroes"></app-heroe-tarjeta>
 </div>
 
