@@ -5,3 +5,36 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .spacer{
     flex: 1 1 auto;
 }
+
+img{
+    max-width: 100%;
+    display: block;
+
+}
+
+.container-card{
+   display: grid;
+   grid-template-columns: repeat(1, 1fr);
+   gap: 20px;
+}
+
+@media (min-width: 768px){
+    .container-card{
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 992px){
+    .container-card{
+
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1200px){
+    .container-card{
+
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
