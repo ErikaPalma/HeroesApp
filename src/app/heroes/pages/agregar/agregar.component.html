@@ -5,35 +5,51 @@
         <form>
             <div class="row">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Super Héroe" required>
+                  <input 
+                    type="text" 
+                    [(ngModel)]="heroe.superhero"
+                    class="form-control" 
+                    placeholder="Super Héroe" 
+                    required>
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Alter Ego" required>
+                  <input 
+                  type="text" 
+                  [(ngModel)]="heroe.alter_ego"
+                  class="form-control" 
+                  placeholder="Alter Ego" 
+                  required>
                 </div>
               </div>
               <div class="mt-3"> 
-                <input type="text" placeholder="Primera Aparición" class="form-control" required>
+                <input type="text" [(ngModel)]="heroe.first_appearance" placeholder="Primera Aparición" class="form-control" required>
               </div>
               <div class="mt-3"> 
-                <input type="text" placeholder="Personajes" class="form-control" required>
+                <input type="text" [(ngModel)]="heroe.characters" placeholder="Personajes" class="form-control" required>
               </div>
               <div class="mt-3"> 
-                <select class="form-select" aria-label="Default select example">
-                    <option selected disabled> <--Escoge un creador--></option>
+                <select [(ngModel)]="heroe.publisher" class="form-select" aria-label="Default select example">
                     <option *ngFor="let publisher of publishers"
-                            [value]="publisher.id">
+                            [value]="publisher.id" >
                             {{publisher.desc}}
                     </option>
                 
                   </select>
               </div>
               <div class="mt-3"> 
-                <input type="url" placeholder="Foto url" class="form-control" required>
+                <input type="url" [(ngModel)]="heroe.alt_img" placeholder="Foto url" class="form-control" required>
               </div>
 
               <div class="d-grid gap-2 mt-3">
-                <button class="btn" mat-raised-button color="primary" type="button">Guardar</button>
-             
+                <button 
+                class="btn" 
+                mat-raised-button 
+                color="primary" 
+                type="button"
+                (click)="guardar()">
+                Guardar
+            </button>
+                
               </div>              
         </form>
        
