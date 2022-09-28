@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Heroe, Publisher } from '../../interfaces/heroe.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { switchMap } from 'rxjs/operators';
+import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-agregar',
@@ -22,7 +24,11 @@ export class AgregarComponent implements OnInit {
 
   heroe: Heroe;
 
-  constructor(private heroesService: HeroesService, private router: Router) {
+  constructor(
+    private heroesService: HeroesService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
     this.heroe = {
       superhero: '',
       alter_ego: '',
@@ -33,14 +39,29 @@ export class AgregarComponent implements OnInit {
     };
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params
+      .pipe(switchMap(({ id }) => this.heroesService.getHeroeId(id)))
+      .subscribe((heroe) => (this.heroe = heroe));
+  }
 
   guardar() {
     if (this.heroe.superhero.trim().length === 0) {
       return;
     }
-    this.heroesService
-      .addHeroe(this.heroe)
-      .subscribe((heroe) => this.router.navigate(['/heroes', heroe.id]));
+
+    if (this.heroe.id) {
+      //actualizar
+      this.heroesService
+        .updateHeroe(this.heroe)
+        .subscribe((heroe) => console.log('Actualizando', heroe));
+    } else {
+      //Crear
+      this.heroesService
+        .addHeroe(this.heroe)
+        .subscribe((heroe) =>
+          this.router.navigate(['/heroes/editar', heroe.id])
+        );
+    }
   }
 }

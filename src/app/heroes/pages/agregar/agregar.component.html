@@ -1,62 +1,93 @@
-<h1>Nuevo Héroe <small>akaja</small></h1>
+<h1>
+   
+    Héroe
+    <small>{{ heroe.superhero }}</small> 
+</h1>
 
 <div class="container-card">
-    <div>
-        <form>
-            <div class="row">
-                <div class="col">
-                  <input 
-                    type="text" 
-                    [(ngModel)]="heroe.superhero"
-                    class="form-control" 
-                    placeholder="Super Héroe" 
-                    required>
-                </div>
-                <div class="col">
-                  <input 
-                  type="text" 
-                  [(ngModel)]="heroe.alter_ego"
-                  class="form-control" 
-                  placeholder="Alter Ego" 
-                  required>
-                </div>
-              </div>
-              <div class="mt-3"> 
-                <input type="text" [(ngModel)]="heroe.first_appearance" placeholder="Primera Aparición" class="form-control" required>
-              </div>
-              <div class="mt-3"> 
-                <input type="text" [(ngModel)]="heroe.characters" placeholder="Personajes" class="form-control" required>
-              </div>
-              <div class="mt-3"> 
-                <select [(ngModel)]="heroe.publisher" class="form-select" aria-label="Default select example">
-                    <option *ngFor="let publisher of publishers"
-                            [value]="publisher.id" >
-                            {{publisher.desc}}
-                    </option>
-                
-                  </select>
-              </div>
-              <div class="mt-3"> 
-                <input type="url" [(ngModel)]="heroe.alt_img" placeholder="Foto url" class="form-control" required>
-              </div>
 
-              <div class="d-grid gap-2 mt-3">
-                <button 
-                class="btn" 
-                mat-raised-button 
-                color="primary" 
-                type="button"
-                (click)="guardar()">
-                Guardar
-            </button>
+    <div >
+        
+        <div>
+            <mat-form-field  >
+                <mat-label>Super Héroe</mat-label>
+                <input matInput
+                       type="text"
+                       [(ngModel)]="heroe.superhero"
+                       required>
+            </mat-form-field>
+    
+            <mat-form-field >
+                <mat-label>Alter Ego</mat-label>
+                <input matInput
+                       type="text"
+                       [(ngModel)]="heroe.alter_ego"
+                       required>
+            </mat-form-field>
+        </div>
+
+
+        <mat-form-field>
+            <mat-label>Primera Aparición</mat-label>
+            <input matInput
+                   type="text"
+                   [(ngModel)]="heroe.first_appearance"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Personajes</mat-label>
+            <input matInput
+                   type="text"
+                   [(ngModel)]="heroe.characters"
+                   required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Creador</mat-label>
+            <mat-select [(ngModel)]="heroe.publisher"
+                        required>
+                <mat-option *ngFor="let publisher of publishers"
+                            [value]="publisher.id">
+                    {{ publisher.desc }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Foto Url</mat-label>
+            <input matInput
+                   type="url"
+                   [(ngModel)]="heroe.alt_img"
+                   required>
+        </mat-form-field>
+
+        <br>
+
+        <div >
+            <button class="m-3" mat-raised-button 
+                    color="primary"
+                    (click)="guardar()">
+                <mat-icon>edit</mat-icon> Guardar
                 
-              </div>              
-        </form>
-       
+            </button>
+        
+            <span class="spacer"></span>
+
+            <button *ngIf="heroe.id"
+                    mat-raised-button
+                    
+                    color="warn">
+                <mat-icon>remove</mat-icon>
+                Borrar
+            </button>
+        </div>
+
+
     </div>
-    <div>
-        <div class="mt-3"> 
-            <img [src]="heroe | imagen" >
-          </div>
+
+    <div >
+        <img [src]="heroe | imagen">
     </div>
+
 </div>
