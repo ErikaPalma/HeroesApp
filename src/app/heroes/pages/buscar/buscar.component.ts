@@ -6,14 +6,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 @Component({
   selector: 'app-buscar',
   templateUrl: './buscar.component.html',
-  styles: [
-    `
-      .tarjeta {
-        width: 50%;
-        margin: 0 auto;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class BuscarComponent implements OnInit {
   termino: string;

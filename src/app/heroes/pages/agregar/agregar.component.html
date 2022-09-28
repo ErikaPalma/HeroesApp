@@ -1,1 +1,46 @@
-<p>agregar works!</p>
+<h1>Nuevo Héroe <small>akaja</small></h1>
+
+<div class="container-card">
+    <div>
+        <form>
+            <div class="row">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Super Héroe" required>
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Alter Ego" required>
+                </div>
+              </div>
+              <div class="mt-3"> 
+                <input type="text" placeholder="Primera Aparición" class="form-control" required>
+              </div>
+              <div class="mt-3"> 
+                <input type="text" placeholder="Personajes" class="form-control" required>
+              </div>
+              <div class="mt-3"> 
+                <select class="form-select" aria-label="Default select example">
+                    <option selected disabled> <--Escoge un creador--></option>
+                    <option *ngFor="let publisher of publishers"
+                            [value]="publisher.id">
+                            {{publisher.desc}}
+                    </option>
+                
+                  </select>
+              </div>
+              <div class="mt-3"> 
+                <input type="url" placeholder="Foto url" class="form-control" required>
+              </div>
+
+              <div class="d-grid gap-2 mt-3">
+                <button class="btn" mat-raised-button color="primary" type="button">Guardar</button>
+             
+              </div>              
+        </form>
+       
+    </div>
+    <div>
+        <div class="mt-3"> 
+            <img [src]="heroe | imagen" >
+          </div>
+    </div>
+</div>
