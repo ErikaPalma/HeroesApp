@@ -1,5 +1,5 @@
 <h1>
-   
+    {{(heroe.id) ? 'Editar' : 'Nuevo'}}
     Héroe
     <small>{{ heroe.superhero }}</small> 
 </h1>
@@ -68,7 +68,7 @@
             <button class="m-3" mat-raised-button 
                     color="primary"
                     (click)="guardar()">
-                <mat-icon>edit</mat-icon> Guardar    
+                <mat-icon>edit</mat-icon>  {{(heroe.id) ? 'Actualizar' : 'Crear'}}   
             </button>
         
             <span class="spacer"></span>
