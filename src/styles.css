@@ -32,3 +32,6 @@ img{
     }
 }
 
+mat-grid-tile {
+    padding-top: calc(100% - 60%) !important;
+  }
